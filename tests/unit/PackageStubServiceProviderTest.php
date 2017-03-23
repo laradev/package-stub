@@ -4,20 +4,15 @@ namespace Laradev;
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Foundation\Application;
+use Laradev\Test\Support\TestCase;
 use Mockery as m;
 use Mockery\MockInterface;
-use PHPUnit_Framework_TestCase;
 
-final class PackageStubServiceProviderTest extends PHPUnit_Framework_TestCase {
-    
-    public function tearDown() {
-        m::close();
-        parent::tearDown();
-    }
-
+final class PackageStubServiceProviderTest extends TestCase
+{
     public function testRegister()
     {
-        $app = $this->newAppMock('register');
+        $app = $this->newAppMockWithConfig('register');
         
         $serviceProvider = new PackageStubServiceProvider($app);
         
@@ -28,7 +23,7 @@ final class PackageStubServiceProviderTest extends PHPUnit_Framework_TestCase {
     
     public function testBoot()
     {
-        $app = $this->newAppMock('boot');
+        $app = $this->newAppMockWithConfig('boot');
         
         $serviceProvider = new PackageStubServiceProvider($app);
         
@@ -52,19 +47,30 @@ final class PackageStubServiceProviderTest extends PHPUnit_Framework_TestCase {
      * @param string $method
      * @return MockInterface
      */
-    private function newAppMock(string $method):MockInterface
+    private function newAppMockWithConfig(string $method):MockInterface
     {
-        $config = m::mock(Repository::class)
+        $config = $this->newConfigMock()
             ->shouldReceive('set')
             ->with(PackageStubServiceProvider::CONFIG_KEY.'.'.$method, true)
             ->andSet($method, true)
         ->getMock();
         
-        return m::mock(Application::class)
+        return $this->newAppMock()
             ->shouldReceive('make')
             ->with('config')
             ->andReturn($config)
             ->andSet('config', $config)
         ->getMock();
     }
+
+    protected function doSetUp()
+    {
+        
+    }
+
+    protected function doTearDown()
+    {
+        
+    }
+
 }

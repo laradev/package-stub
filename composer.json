@@ -1,0 +1,14 @@
+{
+    "name": "laradev/package-stub",
+    "description": "Laravel development package stub",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eric VILLARD",
+            "email": "dev@eviweb.fr",
+            "homepage": "https://github.com/eviweb",
+            "role": "developer"
+        }
+    ]
+}

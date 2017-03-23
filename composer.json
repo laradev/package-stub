@@ -10,5 +10,18 @@
             "homepage": "https://github.com/eviweb",
             "role": "developer"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "laradev\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "laradev\\": [
+                "tests/feature",
+                "tests/unit"
+            ]
+        }
+    }
 }

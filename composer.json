@@ -13,12 +13,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "laradev\\": "src/"
+            "Laradev\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "laradev\\": [
+            "Laradev\\": [
                 "tests/feature",
                 "tests/unit"
             ]

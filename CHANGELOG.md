@@ -7,6 +7,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 #### Fixed
 - typo in _README.md_
 
+#### Added
+- installation and usage sections in _README.md_
+
 ### 0.1.0 - 2017-03-23
 #### Added
 - package files
